@@ -70,4 +70,18 @@ export class HeroesService
             return res.json();
         }));
     }
+
+    borrarHeroe(key$: string)
+    {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let url = `${this.heroeURL}/${key$}.json`;
+        //usando ecmascript6 no hay necesidad de definir así {headers:headers}, simplemente con {headers}
+        //o sea, no es necesario esto {nombrePropiedad:valorPropiedad}, directamente podemos hacerlo así {valorPropiedad}
+        return this.http.delete(url, { headers }).pipe(map(res =>
+        {
+            console.log(res.json());
+            return res.json();
+        }));
+    }
 }
